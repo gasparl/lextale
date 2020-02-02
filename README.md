@@ -1,4 +1,4 @@
-Python/PsychoPy implementations of LexTALE (English, German, Dutch).
+Python/PsychoPy implementations of LexTALE (English, German, Dutch). Feel free to use it.
 
 See:
 
