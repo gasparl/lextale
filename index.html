@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="png" href="./lgo.png">
+    <title>LexTALE</title>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="author" content="Gaspar Lukacs">
+    <meta charset="UTF-8">
+    <script src="./main.js"></script>
+    <link href="./styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="notranslate">
+
+    <div id="div_start">
+        <br />
+        <br />
+        <br />
+        <input type="radio" name="lang" value="en" checked> English
+        <br />
+        <br />
+        <input type="radio" name="lang" value="de"> German
+        <br />
+        <br />
+        <input type="radio" name="lang" value="nl"> Dutch
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <button class="bttn" onclick="select_lg();">START</button>
+    </div>
+
+    <div id="div_lex_intro">
+        <br />
+
+        <div class="texts">
+
+        <div class="lg_en">
+            This test consists of about 60 trials, in each of which you will see a string of letters. Your task is to decide whether this is an existing English word or not. If you think it is an existing English word, you click on "yes", and if you
+            think it is not an existing English word, you click on "no".
+            <br /><br />
+            If you are sure that the word exists, even though you don’t know its exact meaning, you may still respond "yes". But if you are not sure if it is an existing word, you should respond "no".
+            <br /><br />
+            In this experiment, we use British English rather than American English spelling. For example: "realise" instead of "realize"; "colour" instead of "color", and so on. Please don’t let this confuse you. This experiment is not about
+            detecting such subtle spelling differences anyway.
+            <br /><br />
+            You have as much time as you like for each decision. This part of the experiment will take about 5 minutes.
+            <br /><br />
+            If everything is clear, you can now start the experiment.
+        </div>
+        <div class="lg_de">
+            Dieser Test besteht aus ungefähr 60 Durchgängen, in denen Sie jeweils eine Buchstabenreihe sehen. Ihre Aufgabe ist es, zu entscheiden, ob diese Buchstabenreihe ein existierendes deutsches Wort ist oder nicht. Falls sie glauben, dass es
+            ein deutsches Wort ist, klicken Sie auf "ja", andernfalls auf "nein".
+            <br /><br />
+            Sollten Sie sich sicher sein, dass ein Wort existiert, aber seine Bedeutung nicht kennen, können Sie trotzdem mit "ja" antworten. Sind Sie sich aber unsicher, ob das Wort überhaupt im Deutschen existiert, sollten Sie mit "nein" antworten.
+            <br /><br />
+            Sie haben so viel Zeit wie Sie möchten für jede Antwort. Der Test dauert etwa 5 Minuten.
+            <br /><br />
+            Wenn Sie bereit sind, können Sie selbst das Experiment starten.
+        </div>
+        <div class="lg_nl">
+            Deze test bestaat uit ongeveer 60 trials. Je krijgt steeds een letterreeks te zien. Jouw taak is om te beslissen of dit een bestaand Nederlands woord is of niet. Als je denkt dat het een bestaand Nederlands woord is klik je op "ja", als
+            je denkt dat het geen bestaand Nederlands woord is klik je op "nee".
+            <br /><br />
+            Als je er zeker van bent dat het woord bestaat, ook als je niet precies weet wat het betekent, mag je toch met "ja" antwoorden. Maar als je twijfelt of het wel een bestaand woord is, kies dan "nee".
+            <br /><br />
+            Je hebt zoveel tijd als je wilt voor elke beslissing. Dit deel van het experiment duurt ongeveer 5 minuten.
+            <br /><br />
+            Als alles duidelijk is kun je het experiment nu starten.
+        </div>
+        <div class="lg_ch">
+            xx
+        </div>
+</div>
+
+        <br /><br /><br />
+
+        <button class="bttn lg_en lg_de lg_nl" onclick="lexmain();">OK</button>
+
+        <br />
+        <br />
+    </div>
+
+    <div id="div_lex_main">
+        <button onclick="lexclick('no');" class="lexresp_buttons lexresp_left">
+            <span class="lg_en">no</span>
+            <span class="lg_de">nein</span>
+            <span class="lg_nl">nee</span>
+        </button>
+        <button onclick="lexclick('yes');" class="lexresp_buttons lexresp_right">
+            <span class="lg_en">yes</span>
+            <span class="lg_de lg_nl">ja</span>
+        </button>
+        <p id="lexstim"></p>
+    </div>
+
+    <div id="div_end">
+        The test is completed.
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 140%;
+    text-align: center;
+}
+
+button {
+    margin: 0 auto;
+    display: block;
+}
+
+.bttn {
+    font-size: 25px;
+    padding: 16px;
+    border: 2px solid #2e2e2e;
+    transition-duration: 0.4s;
+}
+
+.texts {
+    max-width: 38em;
+    min-width: 15em;
+    font-size: 110%;
+    line-height: 150%;
+    text-align: left;
+    text-indent: 0;
+    padding: 0 0.5em;
+    display: inline-block;
+}
+
+.bttn:hover {
+    color: white;
+    background-color: #2e2e2e;
+}
+
+input[type=radio] {
+    width: 20px;
+    height: 20px;
+}
+
+#div_lex_intro, #div_lex_main, #div_end, .lg_en, .lg_de, .lg_nl, .lg_ch {
+    display: none;
+}
+
+#lexstim {
+    font-size: 160%;
+    color: #000000;
+    text-align: center;
+    font-weight: bolder;
+    font-style: italic;
+    position: fixed;
+    top: 41%;
+    left: 50%;
+    margin: 0 -50% 0 0;
+    transform: translate(-50%, -50%);
+}
+
+.lexresp_left {
+    left: 43%;
+    background-color: #ff0000;
+}
+
+.lexresp_right {
+    left: 57%;
+    background-color: #00ff00;
+}
+
+.lexresp_buttons {
+    font-size: 3.5vw;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    color: #000000;
+    text-align: center;
+    position: fixed;
+    height: 8vw;
+    width: 12vw;
+}
