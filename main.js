@@ -12,6 +12,7 @@ let corr_nonword = 0;
 // citP.corr_word + '+' + citP.corr_nonword
 function lexclick(lexrespd) {
     lexstim_item.response = lexrespd;
+    lexstim_item.time = Date.now();
     console.log(lexstim_item);
     if (lexstim_item.dummy === 0) {
         if (lexstim_item.wstatus === 1 && lexrespd === 'yes') {
@@ -24,10 +25,10 @@ function lexclick(lexrespd) {
     if (lextale_items.length > 0) {
         lex_next();
     } else {
-        lex_result = (corr_word / 40 * 100 + corr_nonword / 20 * 100) / 2;
+        lex_score = (corr_word / 40 * 100 + corr_nonword / 20 * 100) / 2;
         console.log('Correctly identified real words:', corr_word);
         console.log('Correctly identified pseudo words:', corr_nonword);
-        console.log('Lextale score:', corr_nonword);
+        console.log('LexTALE score: ' + lex_score + '%');
         document.getElementById('div_lex_main').style.display = 'none';
         document.getElementById('div_end').style.display = 'block';
     }
