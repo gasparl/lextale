@@ -1,4 +1,4 @@
-Python/PsychoPy implementations of LexTALE (English, German, Dutch). Feel free to use it.
+HTML/JavaScript and Python/PsychoPy implementations of LexTALE (English, German, Dutch). Feel free to use them. (Chinese version is in progress.)
 
 See:
 
