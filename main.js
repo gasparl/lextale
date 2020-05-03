@@ -12,6 +12,7 @@ function lex_next() {
     window.lexstim_item = lextale_items.shift();
     document.getElementById('lexstim').textContent = lexstim_item.word;
 }
+let full_data;
 let lex_result = 'none';
 let corr_word = 0;
 let corr_nonword = 0;
@@ -27,11 +28,12 @@ function lexclick(lexrespd) {
             corr_nonword++;
         }
     }
+    full_data += ""; // TODO: add info
     document.activeElement.blur();
     if (lextale_items.length > 0) {
         lex_next();
     } else {
-        lex_score = (corr_word / 40 * 100 + corr_nonword / 20 * 100) / 2;
+        let lex_score = (corr_word / 40 * 100 + corr_nonword / 20 * 100) / 2;
         console.log('Correctly identified real words:', corr_word);
         console.log('Correctly identified pseudo words:', corr_nonword);
         console.log('LexTALE score: ' + lex_score + '%');
@@ -43,8 +45,23 @@ function lexclick(lexrespd) {
 function ch_ending() {
     document.getElementById('div_lexch_main').style.display = 'none';
     document.getElementById('div_end').style.display = 'block';
-    // TODO: calc results
+
+    let corr_ch = 0;
+    let corr_nonch = 0;
+    lextale_items.forEach((dct) => {
+        let chekd = document.getElementById(dct.filename + '_cb').checked;
+        if (dct.valid == 1 && chekd == true) {
+            corr_ch++;
+        } else if (dct.valid == 0 && chekd == false) {
+            corr_nonch++;
+        }
+    });
+    let lex_score = (corr_ch / 60 * 100 + corr_nonch / 30 * 100) / 2; // same as "(a + 2 * b) / 120"
+    console.log('Correctly identified real characters:', corr_ch);
+    console.log('Correctly identified pseudo characters:', corr_nonch);
+    console.log('LexTALE_CH score: ' + lex_score + '%');
 }
+
 
 function images_loaded() {
     console.log('All images loaded.');
@@ -84,10 +101,10 @@ function select_lg() {
         load_all_ch();
         selects = document.querySelectorAll('.lg_' + lexlang + ', .lg_ch');
     } else {
+        full_data = ""; // TODO: add headers
         window.lextale_items = lex_dict[lexlang];
         selects = document.querySelectorAll('.lg_' + lexlang);
     }
-    window.lextale_items = lex_dict[lexlang];
     selects.forEach((elem) => {
         elem.style.display = 'block';
     });
