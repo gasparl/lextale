@@ -4,6 +4,10 @@ let lexlang = 'en'; // English: 'en', German: 'de', Dutch: 'nl', Chinese: 'ch'
 
 let path_imgs = './ch_items/';
 
+document.addEventListener("DOMContentLoaded", function() {
+    preload_single('LEXTALE_CH_instructions.png', 'intro_ch');
+});
+
 function lex_next() {
     window.lexstim_item = lextale_items.shift();
     document.getElementById('lexstim').textContent = lexstim_item.word;
@@ -89,20 +93,24 @@ function select_lg() {
     });
 }
 
-function load_all_ch() {
-    preload_single('LEXTALE_CH_instructions.png', 'intro_ch');
+function load_pre_ch() {
     preload_single('LEXTALE_CH_instruction_short1.png', 'intro_ch_short1');
     preload_single('LEXTALE_CH_instruction_bottom.png', 'intro_ch_bottom');
     preload_single('LEXTALE_CH_instruction_short2.png', 'intro_ch_short2');
     preload_single('LEXTALE_CH_instruction_end.png', 'intro_ch_end');
     preload_single('LEXTALE_CH_exampleitem01.png', 'corr1');
     preload_single('LEXTALE_CH_exampleitem04.png', 'corr4');
+    let quests = document.querySelectorAll('.question_class');
+    quests.forEach((elem) => {
+        elem.src = path_imgs + 'LEXTALE_CH_instruction_question.png';
+    });
+}
 
+function load_all_ch() {
     const example_srcs = ['LEXTALE_CH_exampleitem01.png', 'LEXTALE_CH_exampleitem02.png', 'LEXTALE_CH_exampleitem03.png', 'LEXTALE_CH_exampleitem04.png'];
     document.getElementById('ch_list_examples').innerHTML = example_srcs.map(fillsrcs_ex).join('');
     document.getElementById("LEXTALE_CH_exampleitem01.png").checked = true;
     document.getElementById("LEXTALE_CH_exampleitem04.png").checked = true;
-
     preloadAll(example_srcs)
         .then(images => console.log("Examples loaded."))
         .catch(err => {
@@ -120,7 +128,6 @@ function load_all_ch() {
             console.error('Failed', err);
             document.getElementById('loading_id').innerHTML = 'Failed to load images. (For proper usage see  <a href="https://github.com/gasparl/lextale" target="_blank">https://github.com/gasparl/lextale</a>. See Console for more information about this specific error.)';
         });
-
 
     let quests = document.querySelectorAll('.question_class');
     quests.forEach((elem) => {
@@ -155,6 +162,9 @@ function preload_single(src, id) {
     const img = document.getElementById(id);
     img.onload = function() {
         console.log("Loaded:", src);
+        if (id == 'intro_ch') {
+            load_pre_ch();
+        }
     };
     img.onerror = function() {
         console.log("Failed:", src);
