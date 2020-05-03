@@ -8,6 +8,7 @@
     <meta name="google" content="notranslate">
     <meta name="author" content="Gaspar Lukacs">
     <meta charset="UTF-8">
+    <script src="./stimdata.js"></script>
     <script src="./main.js"></script>
     <link href="./styles.css" rel="stylesheet" type="text/css">
 </head>
@@ -16,29 +17,40 @@
 
     <div id="div_start">
         <br />
-        <br />
-        <br />
         <div style="display: inline-block; text-align: left;">
-            <input type="radio" name="lang" value="en" checked> English
+            <span style="color:grey">----------------------------------------------------------</span>
             <br />
             <br />
-            <input type="radio" name="lang" value="de"> German
+            <input type="radio" id='en_id' name="lang" value="en" checked>
+            <label for="en_id">English</label>
             <br />
             <br />
-            <input type="radio" name="lang" value="nl"> Dutch
+            <input type="radio" id='de_id' name="lang" value="de">
+            <label for="de_id">German</label>
             <br />
             <br />
-            <input type="radio" name="lang" value="ch"> Mandarin Chinese
+            <input type="radio" id='nl_id' name="lang" value="nl">
+            <label for="nl_id">Dutch</label>
             <br />
             <br />
-            <input type="radio" name="lang" value="ch"> Mandarin Chinese with English intro
+            <input type="radio" id='ch1_id' name="lang" value="ch1">
+            <label for="ch1_id">Mandarin Chinese (Chinese texts only)</label>
             <br />
             <br />
+            <input type="radio" id='ch2_id' name="lang" value="ch2">
+            <label for="ch2_id">Mandarin Chinese with English intro</label>
+            <br />
+            <br />
+            <span style="color:grey">----------------------------------------------------------</span>
         </div>
         <br />
         <br />
         <br />
         <button class="bttn" onclick="select_lg();">START</button>
+        <br />
+        <br />
+        <hr />
+        <i>For information and references see <a href="https://github.com/gasparl/lextale" target="_blank">https://github.com/gasparl/lextale</a></i>
     </div>
 
     <div id="div_lex_intro">
@@ -88,14 +100,57 @@
                 <br /><br />
                 Als alles duidelijk is kun je het experiment nu starten.
             </div>
-            <div class="lg_ch">
-                /In progress.../
+            <div class="lg_ch" id="ch_firstscreen">
+
+                <img id="intro_ch" src=''
+                    alt="(Warning: Missing image! Displaying HTML characters instead.) 在下一页，您将会看到90个看上去像“汉字”的字，当中只有一些是真正存在的汉字。您需要对每一个字做出判断，如果您认为该字是在中文里存在的(即使您不能够明确地说出该字的意思)或者是您知道该字的话，请勾选左上方的“是汉字”选项 。您无需快速回答每一道问题，但请您根据您的一反应来作答，不用过度的犹豫。请在没有任何外来帮忙的情况下独立完成此测试（不要使用任何汉语词典！）。所有的字皆为简体中文。下方的图片为作答例子。">
+
+                <div class="lg_ch2">
+                    On the next page, you are going to be shown 90 characters that look “Chinese”. Only some of them are real Chinese characters. You have to decide for each item whether it is a real Chinese character or not. Please select the
+                    top-left
+                    option <img class="question_class" src='' alt="是汉字 (error note: missing image!)"> if you know the character or if you believe that the item is a real Chinese character, even if you may not know its precise meaning. You do not need
+                    to
+                    respond rapidly, but please give your first impression, without any
+                    outside aids (i.e., do not consult a dictionary!). Each character will be presented in Simplified Chinese. A sample of what the test looks like is shown below.
+                </div>
+
+                <br />
+
+                <div id="example_screen">
+                    <br />
+                    <img id="intro_ch_short1" src='' alt='如果您认为该字为汉字,请勾选左上方"是汉字"的选项。(error note: missing image!)'>
+
+                    <div class="lg_ch2">
+                        Please select the top-left option <img class="question_class" src='' alt="是汉字"> if you think the item is a real Chinese character.
+                    </div>
+                    <br /><br />
+
+                    <ul id='ch_list_examples' class="lists checkbox">
+                    </ul>
+
+                </div>
+                <br />
+
+                <div style="text-align:center">
+                    <img id="intro_ch_bottom" src='' alt='当你认为"家"和"桝"是汉字 (error note: missing image!)'>
+                    <div class="lg_ch2">
+                        (When you think the characters
+                        <img id="corr1" src='' alt='家'>
+                        and
+                        <img id="corr4" src='' alt='桝'>
+                        are real Chinese characters.)
+                    </div>
+                </div>
+
+                <div id="loading_id">Trying to load images...</div>
             </div>
         </div>
 
-        <br /><br /><br />
-
-        <button class="bttn lg_en lg_de lg_nl" onclick="lexmain();">OK</button>
+        <br /><br />
+        <button id="startbuttn" class="bttn" onclick="lexmain();">
+            <span class="lg_en lg_de lg_nl">OK</span>
+            <span class="lg_ch"> >> </span>
+        </button>
 
         <br />
         <br />
@@ -112,6 +167,33 @@
             <span class="lg_de lg_nl">ja</span>
         </button>
         <p id="lexstim"></p>
+    </div>
+
+    <div id="div_lexch_main" style="margin: auto;">
+        <div class="lg_ch texts">
+            <img id="intro_ch_short2" src='' alt='如果您认为该字为汉字,请勾选左上方"是汉字"的选项。总共有90个汉字，请在提交答案前对所有汉字作出判断。(error note: missing image!)'>
+            <br />
+            <div class="lg_ch2">
+                Please select the top-left option <img class="question_class" src='' alt="是汉字"> if you think the item is a real Chinese character. There are a total of 90 words, please scroll through and consider all of them before submitting
+                your answers.
+            </div>
+            <br />
+
+            <ul id='ch_list' class="lists checkbox chover">
+            </ul>
+            <hr />
+            <br />
+            <img id="intro_ch_end" src='' alt='总共有90个汉字，请在提交答案前对所有汉字作出判断。'>
+            <br />
+            <div class="lg_ch2">
+                There are a total of 90 words, please scroll through and consider all of them before submitting your answers.
+            </div>
+            <br />
+            <button class="bttn" onclick="ch_ending();">
+                >>
+            </button>
+            <br />
+        </div>
     </div>
 
     <div id="div_end">
