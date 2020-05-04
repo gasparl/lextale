@@ -6,29 +6,50 @@ let path_imgs = './ch_items/';
 
 document.addEventListener("DOMContentLoaded", function() {
     preload_single('LEXTALE_CH_instructions.png', 'intro_ch');
+    basic_times.page_loaded = Date.now();
 });
 
 function lex_next() {
     window.lexstim_item = lextale_items.shift();
     document.getElementById('lexstim').textContent = lexstim_item.word;
+    start_time = Date.now();
 }
 
+let basic_times = {};
 let full_data;
 let corr_word = 0;
 let corr_nonword = 0;
 // citP.corr_word + '+' + citP.corr_nonword
+let start_time = 0;
+let bool_dict = {
+    0: 'false',
+    1: 'true'
+};
+
 function lexclick(lexrespd) {
+    lexstim_item.response_time = Date.now() - start_time;
     lexstim_item.response = lexrespd;
-    lexstim_item.time = Date.now();
     console.log(lexstim_item);
-    if (lexstim_item.dummy === 0) {
-        if (lexstim_item.wstatus === 1 && lexrespd === 'yes') {
+    let corrresp = 'no';
+    if (lexstim_item.wstatus === 1 && lexrespd === 'yes') {
+        corrresp = 'yes';
+        if (lexstim_item.dummy === 0) {
             corr_word++;
-        } else if (lexstim_item.wstatus === 0 && lexrespd === 'no') {
+        }
+    } else if (lexstim_item.wstatus === 0 && lexrespd === 'no') {
+        corrresp = 'yes';
+        if (lexstim_item.dummy === 0) {
             corr_nonword++;
         }
     }
-    full_data += ""; // TODO: add info
+    full_data += [lexstim_item.word,
+        bool_dict[lexstim_item.wstatus],
+        bool_dict[lexstim_item.dummy],
+        lexstim_item.response,
+        corrresp,
+        lexstim_item.response_time
+    ].join('\t') + '\n';
+
     document.activeElement.blur();
     if (lextale_items.length > 0) {
         lex_next();
@@ -38,14 +59,30 @@ function lexclick(lexrespd) {
         document.getElementById('div_end').style.display = 'block';
 
         console.log('Correctly identified real words: ' + corr_word +
-            '\nCorrectly identified pseudo words:' + corr_nonword +
+            '\nCorrectly identified pseudo words: ' + corr_nonword +
             '\nLexTALE score: ' + lex_score + '%');
 
         document.getElementById('end_summary_id').innerHTML =
-            'LexTALE score: <b>' + lex_score.toFixed(2) +
-            '%</b><br>Correctly identified real words: <b>' + corr_word +
-            '</b><br>Correctly identified pseudo words: <b>' + corr_nonword + '</b>';
+            '<span style="font-variant: small-caps;">LexTALE score: <b>' + lex_score.toFixed(2) +
+            '%</span></b><br>Correctly identified real words: <b>' + corr_word +
+            '</b> (out of 40)<br>Correctly identified pseudo words: <b>' + corr_nonword +
+            '</b> (out of 20)' + get_times();
     }
+}
+
+function get_times() {
+    basic_times.test_end = Date.now();
+    console.log(basic_times);
+    let t_full = basic_times.test_end - basic_times.intro_shown;
+    let t_test = basic_times.test_end - basic_times.test_start;
+    return '<br><br>Duration from instruction shown to test completed: ' +
+        format_ms(t_full) + '<br>Duration of testing part only: ' + format_ms(t_test);
+}
+
+function format_ms(milis) {
+    var mins = Math.floor(milis / 1000 / 60);
+    var secs = Math.round(milis / 1000 - (mins * 60)).toFixed();
+    return '<b>' + mins + ' min ' + secs + ' s</b>';
 }
 
 function ch_ending() {
@@ -70,13 +107,14 @@ function ch_ending() {
     });
     let lex_score = (corr_ch / 60 * 100 + corr_nonch / 30 * 100) / 2; // same as "(a + 2 * b) / 120"
     console.log('Correctly checked real characters: ' + corr_ch +
-        '\nCorrectly not checked pseudo characters:' + corr_nonch +
+        '\nCorrectly not checked pseudo characters: ' + corr_nonch +
         '\nLexTALE_CH score: ' + lex_score + '%');
 
     document.getElementById('end_summary_id').innerHTML =
-        'LexTALE_CH score: <b>' + lex_score.toFixed(2) +
-        '%</b><br>Correctly <i>checked</i> real characters: <b>' + corr_ch +
-        '</b><br>Correctly <i>not checked</i> pseudo characters: <b>' + corr_nonch + '</b>';
+        '<span style="font-variant: small-caps;">LexTALE_CH score: <b>' + lex_score.toFixed(2) +
+        '%</span></b><br>Correctly <i>checked</i> real characters: <b>' + corr_ch +
+        '</b> (out of 60)<br>Correctly <i>not checked</i> pseudo characters: <b>' + corr_nonch +
+        '</b> (out of 30)' + get_times();
 }
 
 function show_feed() {
@@ -125,13 +163,20 @@ function select_lg() {
         load_all_ch();
         selects = document.querySelectorAll('.lg_' + lexlang + ', .lg_ch');
     } else {
-        full_data = ""; // TODO: add headers
+        full_data = ['word_shown',
+            'valid',
+            'dummy',
+            'response',
+            'correct',
+            'response_time'
+        ].join('\t') + '\n';
         window.lextale_items = lex_dict[lexlang];
         selects = document.querySelectorAll('.lg_' + lexlang);
     }
     selects.forEach((elem) => {
         elem.style.display = 'block';
     });
+    basic_times.intro_shown = Date.now();
 }
 
 function load_pre_ch() {
@@ -177,6 +222,7 @@ function load_all_ch() {
 }
 
 function lexmain() {
+    basic_times.test_start = Date.now();
     document.getElementById('div_lex_intro').style.display = 'none';
     if (lexlang.length > 2) {
         document.getElementById('div_lexch_main').style.display = 'block';
@@ -187,11 +233,34 @@ function lexmain() {
     }
 }
 
+function copy_to_clip(text) {
+    if (window.clipboardData && window.clipboardData.setData) {
+        return clipboardData.setData("Text", text);
+    } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+        var textarea = document.createElement("textarea");
+        textarea.textContent = text;
+        textarea.style.position = "fixed";
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            return document.execCommand("copy");
+        } catch (ex) {
+            console.warn("Copy to clipboard failed.", ex);
+            return false;
+        } finally {
+            document.body.removeChild(textarea);
+        }
+    }
+}
 
-function copy_to_clip() {
-    element = $('<textarea>').appendTo('body').val(cit_data).select();
-    document.execCommand("Copy");
-    element.remove();
+function dl_as_file(filename_to_dl, data_to_dl) {
+    let elemx = document.createElement('a');
+    elemx.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(data_to_dl);
+    elemx.download = filename_to_dl;
+    elemx.style.display = 'none';
+    document.body.appendChild(elemx);
+    elemx.click();
+    document.body.removeChild(elemx);
 }
 
 function neat_date() {

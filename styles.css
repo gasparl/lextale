@@ -21,7 +21,11 @@ img {
     font-size: 25px;
     padding: 16px;
     border: 2px solid #2e2e2e;
-    transition-duration: 0.4s;
+}
+
+.bttn:hover {
+    color: white;
+    background-color: #2e2e2e;
 }
 
 .texts {
@@ -33,6 +37,7 @@ img {
     text-indent: 0;
     padding: 0 0.5em;
     display: inline-block;
+    margin: auto;
 }
 
 .ch_chars {
@@ -40,11 +45,6 @@ img {
     /*top right bottom left*/
     margin: auto;
     display: block;
-}
-
-.bttn:hover {
-    color: white;
-    background-color: #2e2e2e;
 }
 
 input[type=radio] {
@@ -68,14 +68,28 @@ input[type="radio"]:checked+label {
     user-select: text;
 }
 
+#div_feed button {
+    margin: 0 2em 1em 2em;
+    font-size: 90%;
+    padding: 8px 16px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 #full_data_disp {
     white-space: pre-wrap;
     font-size: initial;
     line-height: initial;
+    padding: 0.8em 2.0em 0.8em 1.4em;
+    background-color: #f3f3f3;
+    border: 1px solid grey;
 }
 
 .lg_ch {
-    font-size: 23px;
+    font-size: 21px;
 }
 
 #ch_firstscreen, #div_lexch_main {

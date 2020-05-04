@@ -18,6 +18,8 @@
     <div id="div_start">
         <br />
         <div style="display: inline-block; text-align: left;">
+
+            <div style="text-align: center;font-variant: small-caps;">LexTALE: select language to be tested</div>
             <span style="color:grey">----------------------------------------------------------</span>
             <br />
             <br />
@@ -34,11 +36,11 @@
             <br />
             <br />
             <input type="radio" id='ch1_id' name="lang" value="ch1">
-            <label for="ch1_id">Mandarin Chinese (Chinese texts only)</label>
+            <label for="ch1_id">Mandarin Chinese (Chinese-only intro)</label>
             <br />
             <br />
             <input type="radio" id='ch2_id' name="lang" value="ch2">
-            <label for="ch2_id">Mandarin Chinese with English intro</label>
+            <label for="ch2_id">Mandarin Chinese incl. English intro</label>
             <br />
             <br />
             <span style="color:grey">----------------------------------------------------------</span>
@@ -73,6 +75,7 @@
                 You have as much time as you like for each decision. This part of the experiment will take about 5 minutes.
                 <br /><br />
                 If everything is clear, you can now start the experiment.
+                <br /><br />
             </div>
             <div class="lg_de">
                 Dieser Test besteht aus ungefähr 60 Durchgängen, in denen Sie jeweils eine Buchstabenreihe sehen. Ihre Aufgabe ist es, zu entscheiden, ob diese Buchstabenreihe ein existierendes deutsches Wort ist oder nicht. Falls sie
@@ -87,6 +90,7 @@
                 Sie haben so viel Zeit wie Sie möchten für jede Antwort. Der Test dauert etwa 5 Minuten.
                 <br /><br />
                 Wenn Sie bereit sind, können Sie selbst das Experiment starten.
+                <br /><br />
             </div>
             <div class="lg_nl">
                 Deze test bestaat uit ongeveer 60 trials. Je krijgt steeds een letterreeks te zien. Jouw taak is om te beslissen of dit een bestaand Nederlands woord is of niet. Als je denkt dat het een bestaand Nederlands woord is klik je op
@@ -99,6 +103,7 @@
                 Je hebt zoveel tijd als je wilt voor elke beslissing. Dit deel van het experiment duurt ongeveer 5 minuten.
                 <br /><br />
                 Als alles duidelijk is kun je het experiment nu starten.
+                <br /><br />
             </div>
             <div class="lg_ch" id="ch_firstscreen">
 
@@ -142,7 +147,7 @@
                     </div>
                 </div>
 
-                <div id="loading_id">Trying to load images...</div>
+                <div id="loading_id"><br /><br />Please wait... (loading images...)</div>
             </div>
         </div>
 
@@ -202,22 +207,31 @@
     </div>
 
     <div class="texts" id="div_feed">
-        <p>
-            <span id="end_summary_id"></span>
-        </p>
-        <p>The full data from the completed test is displayed below. This data can also be downloaded as a <i>txt</i> file using the <b>Download file</b> button. The <b>Copy to clipboard</b> button may also be used to copy the entire data text to the
-            system clipboard, after which it is possible to paste it into any text editor and save it.
-        </p>
-        <p>
-            For more information, see <a href="https://github.com/gasparl/lextale" target="_blank">https://github.com/gasparl/lextale</a>
-        </p>
+        <div style="border: 1px solid black;padding:0 1em 0.5em 1em;">
+            <p>
+                <span id="end_summary_id"></span>
+            </p>
+            <hr>
+            <p style="text-align:justify">
+                The full data from the completed test is displayed below. This data can also be downloaded as a <i>txt</i> file using the <b>Download file</b> button. The <b>Copy to clipboard</b> button may also be used to copy the entire data text
+                to
+                the system clipboard, after which it is possible to paste it into any text editor and save it.
+            </p>
+            <p>
+                <i>For more information, see <a href="https://github.com/gasparl/lextale" target="_blank">https://github.com/gasparl/lextale</a></i>
+            </p>
+        </div>
 
-        <br><br>
-        <button onclick="dl_as_file();">Download&nbsp;file</button> &nbsp; &nbsp; &nbsp;
-        <button onclick="copy_to_clip();">Copy&nbsp;to&nbsp;clipboard</button>
-        <br><br>
+        <br>
+        <div style="display: flex;">
+            <div id="full_data_disp"></div>
+            <div>
+                <button onclick="dl_as_file('lextale_results.txt', full_data);">Download&nbsp;file</button>
+                <button onclick="copy_to_clip(full_data);">Copy&nbsp;to&nbsp;clipboard</button>
+            </div>
+        </div>
 
-        <div id="full_data_disp"></div>
+        <br>
 
     </div>
 
