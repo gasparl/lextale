@@ -12,8 +12,8 @@ function lex_next() {
     window.lexstim_item = lextale_items.shift();
     document.getElementById('lexstim').textContent = lexstim_item.word;
 }
+
 let full_data;
-let lex_result = 'none';
 let corr_word = 0;
 let corr_nonword = 0;
 // citP.corr_word + '+' + citP.corr_nonword
@@ -34,34 +34,56 @@ function lexclick(lexrespd) {
         lex_next();
     } else {
         let lex_score = (corr_word / 40 * 100 + corr_nonword / 20 * 100) / 2;
-        console.log('Correctly identified real words:', corr_word);
-        console.log('Correctly identified pseudo words:', corr_nonword);
-        console.log('LexTALE score: ' + lex_score + '%');
         document.getElementById('div_lex_main').style.display = 'none';
         document.getElementById('div_end').style.display = 'block';
+
+        console.log('Correctly identified real words: ' + corr_word +
+            '\nCorrectly identified pseudo words:' + corr_nonword +
+            '\nLexTALE score: ' + lex_score + '%');
+
+        document.getElementById('end_summary_id').innerHTML =
+            'LexTALE score: <b>' + lex_score.toFixed(2) +
+            '%</b><br>Correctly identified real words: <b>' + corr_word +
+            '</b><br>Correctly identified pseudo words: <b>' + corr_nonword + '</b>';
     }
 }
 
 function ch_ending() {
     document.getElementById('div_lexch_main').style.display = 'none';
     document.getElementById('div_end').style.display = 'block';
-
+    full_data = 'image\tchecked\tcorrect\n';
     let corr_ch = 0;
     let corr_nonch = 0;
     lextale_items.forEach((dct) => {
         let chekd = document.getElementById(dct.filename + '_cb').checked;
+        full_data += dct.filename + '\t' + chekd + '\t';
         if (dct.valid == 1 && chekd == true) {
             corr_ch++;
+            full_data += 'yes';
         } else if (dct.valid == 0 && chekd == false) {
             corr_nonch++;
+            full_data += 'yes';
+        } else {
+            full_data += 'no';
         }
+        full_data += '\n';
     });
     let lex_score = (corr_ch / 60 * 100 + corr_nonch / 30 * 100) / 2; // same as "(a + 2 * b) / 120"
-    console.log('Correctly identified real characters:', corr_ch);
-    console.log('Correctly identified pseudo characters:', corr_nonch);
-    console.log('LexTALE_CH score: ' + lex_score + '%');
+    console.log('Correctly checked real characters: ' + corr_ch +
+        '\nCorrectly not checked pseudo characters:' + corr_nonch +
+        '\nLexTALE_CH score: ' + lex_score + '%');
+
+    document.getElementById('end_summary_id').innerHTML =
+        'LexTALE_CH score: <b>' + lex_score.toFixed(2) +
+        '%</b><br>Correctly <i>checked</i> real characters: <b>' + corr_ch +
+        '</b><br>Correctly <i>not checked</i> pseudo characters: <b>' + corr_nonch + '</b>';
 }
 
+function show_feed() {
+    document.getElementById('div_end').style.display = 'none';
+    document.getElementById('div_feed').style.display = 'block';
+    document.getElementById('full_data_disp').innerHTML = full_data;
+}
 
 function images_loaded() {
     console.log('All images loaded.');
@@ -98,6 +120,7 @@ function select_lg() {
     document.getElementById('div_lex_intro').style.display = 'block';
     let selects;
     if (lexlang.length > 2) {
+        document.getElementById('startbuttn').style.marginLeft = '70%';
         load_all_ch();
         selects = document.querySelectorAll('.lg_' + lexlang + ', .lg_ch');
     } else {

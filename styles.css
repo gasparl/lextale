@@ -1,5 +1,4 @@
 body {
-    -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
@@ -57,8 +56,22 @@ input[type="radio"]:checked+label {
     font-weight: bold;
 }
 
-#div_lex_intro, #div_lex_main, #div_lexch_main, #div_end, .lg_en, .lg_de, .lg_nl, .lg_ch, .lg_ch2 {
+#div_lex_intro, #div_lex_main, #div_lexch_main, #div_end, #div_feed, .lg_en, .lg_de, .lg_nl, .lg_ch, .lg_ch2 {
     display: none;
+}
+
+#div_feed p, #div_feed div {
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+#full_data_disp {
+    white-space: pre-wrap;
+    font-size: initial;
+    line-height: initial;
 }
 
 .lg_ch {

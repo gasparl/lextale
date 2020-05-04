@@ -189,7 +189,7 @@
                 There are a total of 90 words, please scroll through and consider all of them before submitting your answers.
             </div>
             <br />
-            <button class="bttn" onclick="ch_ending();">
+            <button class="bttn" style="margin-left:70%" onclick="ch_ending();">
                 >>
             </button>
             <br />
@@ -198,7 +198,27 @@
 
     <div id="div_end">
         <br /><br /><br />
-        The test is completed.
+        <span ondblclick="show_feed()">The test is completed.
+    </div>
+
+    <div class="texts" id="div_feed">
+        <p>
+            <span id="end_summary_id"></span>
+        </p>
+        <p>The full data from the completed test is displayed below. This data can also be downloaded as a <i>txt</i> file using the <b>Download file</b> button. The <b>Copy to clipboard</b> button may also be used to copy the entire data text to the
+            system clipboard, after which it is possible to paste it into any text editor and save it.
+        </p>
+        <p>
+            For more information, see <a href="https://github.com/gasparl/lextale" target="_blank">https://github.com/gasparl/lextale</a>
+        </p>
+
+        <br><br>
+        <button onclick="dl_as_file();">Download&nbsp;file</button> &nbsp; &nbsp; &nbsp;
+        <button onclick="copy_to_clip();">Copy&nbsp;to&nbsp;clipboard</button>
+        <br><br>
+
+        <div id="full_data_disp"></div>
+
     </div>
 
 </body>
