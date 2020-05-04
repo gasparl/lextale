@@ -121,6 +121,7 @@ function select_lg() {
     let selects;
     if (lexlang.length > 2) {
         document.getElementById('startbuttn').style.marginLeft = '70%';
+        document.getElementById('startbuttn').style.display = 'none';
         load_all_ch();
         selects = document.querySelectorAll('.lg_' + lexlang + ', .lg_ch');
     } else {
@@ -155,7 +156,7 @@ function load_all_ch() {
         .then(images => console.log("Examples loaded."))
         .catch(err => {
             console.error('Failed', err);
-            document.getElementById('loading_id').innerHTML = 'Failed to load example images. (For proper usage see  <a href="https://github.com/gasparl/lextale" target="_blank">https://github.com/gasparl/lextale</a>. See Console for more information about this specific error.)';
+            document.getElementById('loading_id').innerHTML = '<br><b>Failed to load example images! (For proper usage see  <a href="https://github.com/gasparl/lextale" target="_blank">https://github.com/gasparl/lextale</a>. See Console for more information about this specific error.)</b>';
         });
 
     window.lextale_items = lex_dict.ch;
@@ -166,7 +167,7 @@ function load_all_ch() {
         .then(images => images_loaded())
         .catch(err => {
             console.error('Failed', err);
-            document.getElementById('loading_id').innerHTML = 'Failed to load images. (For proper usage see  <a href="https://github.com/gasparl/lextale" target="_blank">https://github.com/gasparl/lextale</a>. See Console for more information about this specific error.)';
+            document.getElementById('loading_id').innerHTML = '<br><b>Failed to load test images! (For proper usage see  <a href="https://github.com/gasparl/lextale" target="_blank">https://github.com/gasparl/lextale</a>. See Console for more information about this specific error.)</b>';
         });
 
     let quests = document.querySelectorAll('.question_class');
