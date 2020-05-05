@@ -190,9 +190,6 @@ function load_pre_ch() {
     quests.forEach((elem) => {
         elem.src = path_imgs + 'LEXTALE_CH_instruction_question.png';
     });
-}
-
-function load_all_ch() {
     const example_srcs = ['LEXTALE_CH_exampleitem01.png', 'LEXTALE_CH_exampleitem02.png', 'LEXTALE_CH_exampleitem03.png', 'LEXTALE_CH_exampleitem04.png'];
     document.getElementById('ch_list_examples').innerHTML = example_srcs.map(fillsrcs_ex).join('');
     document.getElementById("LEXTALE_CH_exampleitem01.png").checked = true;
@@ -203,7 +200,9 @@ function load_all_ch() {
             console.error('Failed', err);
             document.getElementById('loading_id').innerHTML = '<br><b>Failed to load example images! (For proper usage see  <a href="https://github.com/gasparl/lextale" target="_blank">https://github.com/gasparl/lextale</a>. See Console for more information about this specific error.)</b>';
         });
+}
 
+function load_all_ch() {
     window.lextale_items = lex_dict.ch;
     const sources = lextale_items.map(dct => dct.filename);
     document.getElementById('ch_list').innerHTML = sources.map(fillsrcs).join('');
