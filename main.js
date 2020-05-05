@@ -7,7 +7,24 @@ let path_imgs = './ch_items/';
 document.addEventListener("DOMContentLoaded", function() {
     preload_single('LEXTALE_CH_instructions.png', 'intro_ch');
     basic_times.page_loaded = Date.now();
+    document.getElementById('finished_id').addEventListener("touchstart", touchstart, false);
+    document.getElementById('finished_id').addEventListener("touchend", touchend, false);
 });
+
+let timer;
+
+function touchstart(e) {
+    e.preventDefault();
+    if (!timer) {
+        timer = setTimeout(show_feed, 900);
+    }
+}
+
+function touchend() {
+    if (timer) {
+        clearTimeout(timer);
+    }
+}
 
 function lex_next() {
     window.lexstim_item = lextale_items.shift();

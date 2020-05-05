@@ -16,7 +16,7 @@ The simplest way to use this application is via the "GitHub Pages" website of th
 
 #### Results
 
-At the end of the test a simple text "The test is completed." is displayed. Results are not displayed automatically so that the tested persons would not see them if they are not supposed to. The summary as well as detailed (trial level) results can be accessed by simply double-clicking on this "The test is completed." text. (They are also written to the browser [Console](https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers); and the detailed trial level data stored in the `full_data` variable also accessible via the Console.)
+At the end of the test a simple text "The test is completed." is displayed. Results are not displayed automatically so that the tested persons would not see them if they are not supposed to. The summary as well as detailed (trial level) results can be accessed by simply double-clicking on this "The test is completed." text. (They are also written to the browser [Console](https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers); and the detailed trial level data stored in the `full_data` variable also accessible via the Console.) On smartphones, long press can be used instead of double click – but generally this application is not optimized for mobile phones.
 
 #### Download or Clone
 
