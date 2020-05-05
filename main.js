@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-let lexlang = 'en'; // English: 'en', German: 'de', Dutch: 'nl', Chinese: 'ch'
+let lexlang = 'en'; // English: 'en', German: 'de', Dutch: 'nl', Chinese: 'ch1', Chinese incl. English: 'ch2'
 
 let path_imgs = './ch_items/';
 
@@ -76,7 +76,7 @@ function get_times() {
     let t_full = basic_times.test_end - basic_times.intro_shown;
     let t_test = basic_times.test_end - basic_times.test_start;
     return '<br><br>Duration from instruction shown to test completed: ' +
-        format_ms(t_full) + '<br>Duration of testing part only: ' + format_ms(t_test);
+        format_ms(t_full) + '<br>Duration of test part only: ' + format_ms(t_test);
 }
 
 function format_ms(milis) {
@@ -150,9 +150,9 @@ function fillsrcs(src, i) {
 }
 
 function select_lg() {
-    chkd = document.querySelector('input[name="lang"]:checked').value;
+    let chkd = document.querySelector('input[name="lang"]:checked');
     if (chkd) {
-        lexlang = chkd;
+        lexlang = chkd.value;
     }
     document.getElementById('div_start').style.display = 'none';
     document.getElementById('div_lex_intro').style.display = 'block';
