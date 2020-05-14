@@ -52,3 +52,5 @@ Lemhöfer, K., & Broersma, M. (2012). Introducing LexTALE: A quick and valid Lex
 If you want to cite this code source just refer to this repo, e.g.:
 
 Lukács G. (2020). LexTALE. https://github.com/gasparl/lextale
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3826505.svg)](https://doi.org/10.5281/zenodo.3826505)
