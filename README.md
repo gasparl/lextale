@@ -35,7 +35,7 @@ If the modified version of the application is uploaded (forked/pushed/cloned) in
 
 #### PsychoPy
 
-To embed the LexTale into a [PsychoPy](https://www.psychopy.org/) task (which was my reason) or for extreme timing precision (which is hardly necessary), you can use the *.py* files. For this, you'll need [*PsychoPy 2* (ideal version: StandalonePsychoPy2-1.90.3)](https://github.com/psychopy/psychopy/releases?after=3.0.0b1) (not 3 or 2020!). From this repository, you only need the one *.py* file for the specific language, e.g. *LexTALE_en.py* for English. Then you run that file from PsychoPy. (Note: I don't have Chinese version for PsychoPy, only English/German/Dutch.)
+To embed the LexTale into a [PsychoPy](https://www.psychopy.org/) task (which was my reason) or for extreme timing precision (which is hardly necessary), you can use the *.py* files. For this, you'll need [*PsychoPy 2* (ideal version: StandalonePsychoPy2-1.90.3)](https://github.com/psychopy/psychopy/releases?after=3.0.0b1) (not 3 or 2020+!). From this repository, you only need the one *.py* file for the specific language, e.g. *LexTALE_en.py* for English. Then you run that file from PsychoPy. (Note: I don't have Chinese version for PsychoPy, only English/German/Dutch.)
 
 
 ### SUPPORT
