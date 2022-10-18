@@ -60,11 +60,11 @@ function lexclick(lexrespd) {
         }
     }
     full_data += [lexstim_item.word,
-        bool_dict[lexstim_item.wstatus],
-        bool_dict[lexstim_item.dummy],
-        lexstim_item.response,
+    bool_dict[lexstim_item.wstatus],
+    bool_dict[lexstim_item.dummy],
+    lexstim_item.response,
         corrresp,
-        lexstim_item.response_time
+    lexstim_item.response_time
     ].join('\t') + '\n';
 
     document.activeElement.blur();
@@ -84,6 +84,8 @@ function lexclick(lexrespd) {
             '%</span></b><br>Correctly identified real words: <b>' + corr_word +
             '</b> (out of 40)<br>Correctly identified pseudo words: <b>' + corr_nonword +
             '</b> (out of 20)' + get_times();
+
+        // you could e.g. here save via PHP with 'store_via_php()'
     }
 }
 
@@ -132,6 +134,8 @@ function ch_ending() {
         '%</span></b><br>Correctly <i>checked</i> real characters: <b>' + corr_ch +
         '</b> (out of 60)<br>Correctly <i>not checked</i> pseudo characters: <b>' + corr_nonch +
         '</b> (out of 30)' + get_times();
+
+    // you could e.g. here save via PHP with 'store_via_php()'
 }
 
 function show_feed() {
@@ -278,6 +282,38 @@ function dl_as_file(filename_to_dl, data_to_dl) {
     elemx.click();
     document.body.removeChild(elemx);
 }
+
+
+function store_via_php() {
+    fetch('./store.php', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'text/plain'
+        },
+        body: JSON.stringify({
+            fname_post: "lextale_results.txt",
+            results_post: full_data
+        })
+    })
+        .then(response => response.text())
+        .then(echoed => {
+            console.log(echoed);
+            if (echoed === 'success') {
+                console.log("The data seems successful saved.");
+                // add here any further code to do in case of success
+            } else {
+                console.log("There is some issue with the saving.");
+                // add here any further code to do in case of failure
+                // e.g. offer to download via button and send via email
+            }
+        })
+        .catch((error) => {
+            console.log('Request failed (internet connection or server issue): ', error);
+            // add here any further code to do in case of failure
+            // e.g. offer to download via button and send via email
+        });
+};
 
 function neat_date() {
     var m = new Date();

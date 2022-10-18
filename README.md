@@ -18,6 +18,10 @@ The simplest way to use this application is via the "GitHub Pages" website of th
 
 At the end of the test a simple text "The test is completed." is displayed. Results are not displayed automatically so that the tested persons would not see them if they are not supposed to. The summary as well as detailed (trial level) results can be accessed by simply double-clicking on this "The test is completed." text. (They are also written to the browser [Console](https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers); and the detailed trial level data stored in the `full_data` variable also accessible via the Console.) On smartphones, long press can be used instead of double click – but generally this application is not optimized for mobile phones.
 
+#### Online studies
+
+The present application is intended for in-lab use (i.e., where the participants comes to you and completes the test on a computer on which you afterwards save the data). However, it can also be used online. For such a case, you need a server that supports some server-side code like PHP via which to save the data. GitHub for instance gives no such option, but universities typically have some free webspace with PHP support. As for the code, an example solution is given in the JavaScript function `store_via_php()` (in *main.js*) that uses the *store.php* file, storing the results as a single file; disabled (commented out) by default. To enable it, just add (or uncomment) it to the desired place it the JavaScript code. Crucially, this is not a full solution (I added this basic template only because of repeated requests, but I never used it): you would need to modify it to save each participant's data in a different file (e.g., give them a subject ID, and add it to the file name) or, if they are to be saved in the same file, a subject ID column in the data or such. 
+
 #### Download or Clone
 
 The application can of course also be downloaded or forked/cloned via Git. E.g. simply use the green "Clone or download" button on this page chosing *Download ZIP*. After downloading, extract the *zip* file into a single folder. Open the *index.html* file in a browser, and it will work just as well as the online version, but with no need for active internet connection.
@@ -44,13 +48,13 @@ If you find any problems, [write an email](mailto:lkcsgaspar@gmail.com) or [open
 ### REFERENCES
 
 
-Chan, I. L., & Chang, C. B. (2018). LEXTALE_CH: A quick, character-based proficiency test for Mandarin Chinese. In A. B. Bertolini & M. J. Kaplan (Eds.), Proceedings of the 42nd Annual Boston University Conference on Language Development, vol. 1 (pp. 114–130). Somerville, MA: Cascadilla Press. (Material from https://osf.io/qdy4n/)
+Chan, I. L., & Chang, C. B. (2018). _LEXTALE_CH: A quick, character-based proficiency test for Mandarin Chinese. In A. B. Bertolini & M. J. Kaplan (Eds.), *Proceedings of the 42nd Annual Boston University Conference on Language Development*, vol. 1 (pp. 114–130). Somerville, MA: Cascadilla Press. (Material from https://osf.io/qdy4n/)
 
 
-Lemhöfer, K., & Broersma, M. (2012). Introducing LexTALE: A quick and valid Lexical Test for Advanced Learners of English. Behavior Research Methods, 44(2), 325–343. https://doi.org/10.3758/s13428-011-0146-0 (Material from http://www.lextale.com/)
+Lemhöfer, K., & Broersma, M. (2012). Introducing LexTALE: A quick and valid Lexical Test for Advanced Learners of English. *Behavior Research Methods, 44*(2), 325–343. https://doi.org/10.3758/s13428-011-0146-0 (Material from http://www.lextale.com/)
 
-If you want to cite this code source just refer to this repo, e.g.:
+If you want to cite this code source, please cite the study for which I originally implemented it:
 
-Lukács G. (2020). LexTALE. https://github.com/gasparl/lextale
+Lukács, G., Kawai, C., Ansorge, U., & Fekete, A. (2022). Detecting concealed language knowledge via response times. *Applied Linguistics Review*. Advance online publication. https://doi.org/10.1515/applirev-2020-0130
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3826505.svg)](https://doi.org/10.5281/zenodo.3826505)
