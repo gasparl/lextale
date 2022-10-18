@@ -18,10 +18,6 @@ The simplest way to use this application is via the "GitHub Pages" website of th
 
 At the end of the test a simple text "The test is completed." is displayed. Results are not displayed automatically so that the tested persons would not see them if they are not supposed to. The summary as well as detailed (trial level) results can be accessed by simply double-clicking on this "The test is completed." text. (They are also written to the browser [Console](https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers); and the detailed trial level data stored in the `full_data` variable also accessible via the Console.) On smartphones, long press can be used instead of double click – but generally this application is not optimized for mobile phones.
 
-#### Online studies
-
-The present application is intended for in-lab use (i.e., where the participants comes to you and completes the test on a computer on which you afterwards save the data). However, it can also be used online. For such a case, you need a server that supports some server-side code like PHP via which to save the data. GitHub for instance gives no such option, but universities typically have some free webspace with PHP support. As for the code, an example solution is given in the JavaScript function `store_via_php()` (in *main.js*) that uses the *store.php* file, storing the results as a single file; disabled (commented out) by default. To enable it, just add (or uncomment) it to the desired place in the JavaScript code. Crucially, this is not a full solution (I added this basic template only because of repeated requests, but I never used it): you would need to modify it to save each participant's data in a different file (e.g., give them a subject ID, and add it to the file name) or, if they are to be saved in the same file, a subject ID column in the data or such. 
-
 #### Download or Clone
 
 The application can of course also be downloaded or forked/cloned via Git. E.g. simply use the green "Clone or download" button on this page chosing *Download ZIP*. After downloading, extract the *zip* file into a single folder. Open the *index.html* file in a browser, and it will work just as well as the online version, but with no need for active internet connection.
@@ -32,6 +28,9 @@ Another simple modification you can do is to remove start page selection options
 
 If the modified version of the application is uploaded (forked/pushed/cloned) into a new GitHub repository, a webpage for the application may also be easily created using GitHub Pages (available under repository Settings).
 
+#### Online studies
+
+The present application is intended for in-lab use (i.e., where the participants comes to you and completes the test on a computer on which you afterwards save the data). However, it can also be used online. For such a case, you need a server that supports some server-side code like PHP via which to save the data. GitHub for instance gives no such option, but universities typically have some free webspace with PHP support. As for the code, an example solution is given in the JavaScript function `store_via_php()` (in *main.js*) that uses the *store.php* file, storing the results as a single file; disabled (commented out) by default. To enable it, just add (or uncomment) it to the desired place in the JavaScript code. Crucially, this is not a full solution (I added this basic template only because of repeated requests, but I never used it): you would need to modify it to save each participant's data in a different file (e.g., give them a subject ID, and add it to the file name) or, if they are to be saved in the same file, a subject ID column in the data or such.
 
 #### PsychoPy
 
