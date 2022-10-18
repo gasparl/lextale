@@ -52,7 +52,8 @@ input[type=radio] {
     height: 15px;
 }
 
-input[type=radio]+label:hover, input[type=radio]:hover {
+input[type=radio]+label:hover,
+input[type=radio]:hover {
     cursor: pointer;
 }
 
@@ -60,11 +61,21 @@ input[type="radio"]:checked+label {
     font-weight: bold;
 }
 
-#div_lex_intro, #div_lex_main, #div_lexch_main, #div_end, #div_feed, .lg_en, .lg_de, .lg_nl, .lg_ch, .lg_ch2 {
+#div_lex_intro,
+#div_lex_main,
+#div_lexch_main,
+#div_end,
+#div_feed,
+.lg_en,
+.lg_de,
+.lg_nl,
+.lg_ch,
+.lg_ch2 {
     display: none;
 }
 
-#div_feed p, #div_feed div {
+#div_feed p,
+#div_feed div {
     -webkit-user-select: text;
     -khtml-user-select: text;
     -moz-user-select: text;
@@ -96,7 +107,8 @@ input[type="radio"]:checked+label {
     font-size: 21px;
 }
 
-#ch_firstscreen, #div_lexch_main {
+#ch_firstscreen,
+#div_lexch_main {
     max-width: 805px;
 }
 

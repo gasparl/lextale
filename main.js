@@ -59,12 +59,13 @@ function lexclick(lexrespd) {
             corr_nonword++;
         }
     }
-    full_data += [lexstim_item.word,
-    bool_dict[lexstim_item.wstatus],
-    bool_dict[lexstim_item.dummy],
-    lexstim_item.response,
+    full_data += [
+        lexstim_item.word,
+        bool_dict[lexstim_item.wstatus],
+        bool_dict[lexstim_item.dummy],
+        lexstim_item.response,
         corrresp,
-    lexstim_item.response_time
+        lexstim_item.response_time
     ].join('\t') + '\n';
 
     document.activeElement.blur();

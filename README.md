@@ -20,7 +20,7 @@ At the end of the test a simple text "The test is completed." is displayed. Resu
 
 #### Online studies
 
-The present application is intended for in-lab use (i.e., where the participants comes to you and completes the test on a computer on which you afterwards save the data). However, it can also be used online. For such a case, you need a server that supports some server-side code like PHP via which to save the data. GitHub for instance gives no such option, but universities typically have some free webspace with PHP support. As for the code, an example solution is given in the JavaScript function `store_via_php()` (in *main.js*) that uses the *store.php* file, storing the results as a single file; disabled (commented out) by default. To enable it, just add (or uncomment) it to the desired place it the JavaScript code. Crucially, this is not a full solution (I added this basic template only because of repeated requests, but I never used it): you would need to modify it to save each participant's data in a different file (e.g., give them a subject ID, and add it to the file name) or, if they are to be saved in the same file, a subject ID column in the data or such. 
+The present application is intended for in-lab use (i.e., where the participants comes to you and completes the test on a computer on which you afterwards save the data). However, it can also be used online. For such a case, you need a server that supports some server-side code like PHP via which to save the data. GitHub for instance gives no such option, but universities typically have some free webspace with PHP support. As for the code, an example solution is given in the JavaScript function `store_via_php()` (in *main.js*) that uses the *store.php* file, storing the results as a single file; disabled (commented out) by default. To enable it, just add (or uncomment) it to the desired place in the JavaScript code. Crucially, this is not a full solution (I added this basic template only because of repeated requests, but I never used it): you would need to modify it to save each participant's data in a different file (e.g., give them a subject ID, and add it to the file name) or, if they are to be saved in the same file, a subject ID column in the data or such. 
 
 #### Download or Clone
 
@@ -48,7 +48,7 @@ If you find any problems, [write an email](mailto:lkcsgaspar@gmail.com) or [open
 ### REFERENCES
 
 
-Chan, I. L., & Chang, C. B. (2018). _LEXTALE_CH: A quick, character-based proficiency test for Mandarin Chinese. In A. B. Bertolini & M. J. Kaplan (Eds.), *Proceedings of the 42nd Annual Boston University Conference on Language Development*, vol. 1 (pp. 114–130). Somerville, MA: Cascadilla Press. (Material from https://osf.io/qdy4n/)
+Chan, I. L., & Chang, C. B. (2018). LEXTALE_CH: A quick, character-based proficiency test for Mandarin Chinese. In A. B. Bertolini & M. J. Kaplan (Eds.), *Proceedings of the 42nd Annual Boston University Conference on Language Development*, vol. 1 (pp. 114–130). Somerville, MA: Cascadilla Press. (Material from https://osf.io/qdy4n/)
 
 
 Lemhöfer, K., & Broersma, M. (2012). Introducing LexTALE: A quick and valid Lexical Test for Advanced Learners of English. *Behavior Research Methods, 44*(2), 325–343. https://doi.org/10.3758/s13428-011-0146-0 (Material from http://www.lextale.com/)
